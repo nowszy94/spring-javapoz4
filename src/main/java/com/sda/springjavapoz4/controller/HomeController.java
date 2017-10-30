@@ -12,6 +12,9 @@ public class HomeController {
     @Autowired
     private SomeService someService;
 
+    @Autowired
+    private SomeService aboutService;
+
     public HomeController() {
 //        this.someService = new SomeService();
     }
@@ -24,7 +27,7 @@ public class HomeController {
 
     @GetMapping("/about")
     public ModelAndView about() {
-        someService.someAction();
+        aboutService.someAction();
         return new ModelAndView("home");
     }
 }

@@ -13,7 +13,12 @@ public class MySpringApplication {
 	}
 
 	@Bean
-	public SomeService blabla() {
+	public SomeService someService() {
 		return new SomeService("My secret message");
+	}
+
+	@Bean
+	public SomeService aboutService() {
+		return new SomeService("About section");
 	}
 }
