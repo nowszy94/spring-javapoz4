@@ -4,6 +4,7 @@ import com.sda.springjavapoz4.service.SomeService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 
 @SpringBootApplication
 public class MySpringApplication {
@@ -12,6 +13,7 @@ public class MySpringApplication {
 		SpringApplication.run(MySpringApplication.class, args);
 	}
 
+	@Primary
 	@Bean
 	public SomeService someService() {
 		return new SomeService("My secret message");

@@ -13,7 +13,7 @@ public class HomeController {
     private SomeService someService;
 
     @Autowired
-    private SomeService aboutService;
+    private SomeService myService;
 
     public HomeController() {
 //        this.someService = new SomeService();
@@ -27,7 +27,7 @@ public class HomeController {
 
     @GetMapping("/about")
     public ModelAndView about() {
-        aboutService.someAction();
+        myService.someAction();
         return new ModelAndView("home");
     }
 }
