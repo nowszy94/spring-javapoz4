@@ -18,7 +18,7 @@ public class HomeController {
     @Autowired
     private SomeService myService;
 
-    @Qualifier("smallNumbersGenerator")
+//    @Qualifier("smallNumbersGenerator")
     @Autowired
     private RandomNumbersGeneratorService randomNumbersGeneratorService;
 

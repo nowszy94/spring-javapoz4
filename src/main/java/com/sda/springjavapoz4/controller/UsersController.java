@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UsersController {
 
-    @Qualifier("bigNumbersGenerator")
+//    @Qualifier("bigNumbersGenerator")
     @Autowired
     private RandomNumbersGeneratorService randomNumbersGeneratorService;
 
