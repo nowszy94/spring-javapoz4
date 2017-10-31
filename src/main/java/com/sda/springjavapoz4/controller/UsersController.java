@@ -20,6 +20,7 @@ public class UsersController {
 
     @GetMapping("/users")
     public ModelAndView users() {
+        System.out.println("blabla");
         someService.someAction();
         return new ModelAndView("home");
     }
