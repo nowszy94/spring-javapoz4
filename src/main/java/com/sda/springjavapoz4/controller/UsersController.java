@@ -1,38 +1,23 @@
 package com.sda.springjavapoz4.controller;
 
-import com.sda.springjavapoz4.service.RandomNumbersGeneratorService;
-import com.sda.springjavapoz4.service.SomeService;
+import com.sda.springjavapoz4.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/users")
 public class UsersController {
 
-//    @Qualifier("bigNumbersGenerator")
     @Autowired
-    private RandomNumbersGeneratorService randomNumbersGeneratorService;
+    private UsersService usersService;
 
-    @Autowired
-    private SomeService someService;
-
-    @GetMapping("/users")
-    public ModelAndView users() {
-        System.out.println("blabla");
-        someService.someAction();
-        return new ModelAndView("home");
+    @GetMapping("/example")
+    public ModelAndView getExampleUser() {
+        System.out.println(usersService.getExampleUser());
+        return new ModelAndView("users");
     }
 
-    @GetMapping("contact-us")
-    public ModelAndView contactUs() {
-        System.out.println(randomNumbersGeneratorService.generateNumber());
-        System.out.println(randomNumbersGeneratorService.generateNumber());
-        System.out.println(randomNumbersGeneratorService.generateNumber());
-        System.out.println(randomNumbersGeneratorService.generateNumber());
-        System.out.println(randomNumbersGeneratorService.generateNumber());
-        System.out.println(randomNumbersGeneratorService.generateNumber());
-        return new ModelAndView("home");
-    }
 }
