@@ -1,5 +1,7 @@
 package com.sda.springjavapoz4.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -66,5 +68,9 @@ public class News {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public String getAbbreviateDescription() {
+        return StringUtils.abbreviate(description, 30);
     }
 }
