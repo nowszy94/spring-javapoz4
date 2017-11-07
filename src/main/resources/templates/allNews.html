@@ -6,18 +6,20 @@
 </head>
 <body>
 <ul>
-    <li th:each="news : ${allNews}" style="list-style-type: none; border: 1px solid black; margin: 20px 0; padding: 10px;">
-        <h1 th:text="${news.title}">
-            Title
-        </h1>
-        <h6 th:text="${news.author.firstName} + ' ' + ${news.author.lastName} + ' - ' + ${news.date}">
-            Jan Kowalski - 21.06.2017
-        </h6>
-        <p th:text="${news.abbreviateDescription}">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, eum incidunt ipsam maiores omnis ut!
-            Assumenda dicta enim iste, molestiae nisi praesentium quaerat quam repellat, sequi,
-            sint tempore tenetur voluptatem.
-        </p>
+    <li th:each="news,iter : ${allNews}" style="list-style-type: none; border: 1px solid black; margin: 20px 0; padding: 10px;">
+        <a th:href="'/news/' + ${iter.index}" href="#" style="text-decoration: none">
+            <h1 th:text="${news.title}">
+                Title
+            </h1>
+            <h6 th:text="${news.author.firstName} + ' ' + ${news.author.lastName} + ' - ' + ${news.date}">
+                Jan Kowalski - 21.06.2017
+            </h6>
+            <p th:text="${news.abbreviateDescription}">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, eum incidunt ipsam maiores omnis ut!
+                Assumenda dicta enim iste, molestiae nisi praesentium quaerat quam repellat, sequi,
+                sint tempore tenetur voluptatem.
+            </p>
+        </a>
     </li>
 </ul>
 </body>

@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<div>
+    <h1 th:text="${news.title}">
+        Title
+    </h1>
+    <h6 th:text="${news.author.firstName} + ' ' + ${news.author.lastName} + ' - ' + ${news.date}">
+        Jan Kowalski - 21.06.2017
+    </h6>
+    <p th:text="${news.description}">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, eum incidunt ipsam maiores omnis ut!
+        Assumenda dicta enim iste, molestiae nisi praesentium quaerat quam repellat, sequi,
+        sint tempore tenetur voluptatem.
+    </p>
+</div>
 </body>
 </html>
