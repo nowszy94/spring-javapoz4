@@ -2,20 +2,43 @@ package com.sda.springjavapoz4.controller;
 
 import com.sda.springjavapoz4.model.User;
 import com.sda.springjavapoz4.service.UsersService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * PathVariable - do wyciagania wartosci ze sciezki
+ * RequestParam - do wyciagania wartosci z queryParametrów (/users?firstName=blabla
+ * ModelAttribute - do wyciagania danych wyslanych w formularzu (content-type:x-www-form-urlencoded
+ * RequestBody - do wyciagania dancyh wyslanych w body (np. content-type: application-json)
+ */
 @Controller
 @RequestMapping("/users")
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
+
+    @PostMapping
+    public String saveUser(@ModelAttribute User user) {
+        usersService.addUser(user);
+        return "redirect:/users";
+    }
+
+    @PostMapping(consumes = "application/json")
+    public String saveUserJson(@RequestBody User user) {
+        usersService.addUser(user);
+        return "redirect:/users";
+    }
+
+    @GetMapping
+    public ModelAndView getAllUsers() {
+        ModelAndView modelAndView = new ModelAndView("users");
+        modelAndView.addObject("users", usersService.getAllUsers());
+        return modelAndView;
+    }
 
     @GetMapping("/{id}")
     public ModelAndView getUser(@PathVariable("id") int id) {
@@ -38,10 +61,6 @@ public class UsersController {
         modelAndView.addObject("users", usersService.getUsersByFirstName(firstName));
         return modelAndView;
     }
-    //1. nowa metoda na sciezke /users
-    //2. parametr firstName
-    //3. W UsersService piszemy metode getUsersByFirstName -> List<User>
-    //4. System.out.println(lista) albo th:each(sprawdzcie na stackoverflow)
 
     @GetMapping("/example")
     public ModelAndView getExampleUser() {

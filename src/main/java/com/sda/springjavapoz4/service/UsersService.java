@@ -57,4 +57,12 @@ public class UsersService {
                 .filter(user -> user.getFirstName().equals(firstName))
                 .collect(Collectors.toList());
     }
+
+    public List<User> getAllUsers() {
+        return users;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
 }

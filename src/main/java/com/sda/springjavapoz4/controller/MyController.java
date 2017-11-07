@@ -18,7 +18,7 @@ public class MyController {
     @Autowired
     private SomeService someService;
 
-    @GetMapping("/users")
+    @GetMapping("/userspoinluhljkh")
     public ModelAndView users() {
         System.out.println("blabla");
         someService.someAction();

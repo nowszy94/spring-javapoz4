@@ -8,10 +8,25 @@
 <!--<h1 th:text="${lastName}">Hello Users</h1>-->
 <ul>
     <li th:each="user : ${users}">
-        <td th:text="${user.id}">1</td>
-        <td th:text="${user.firstName} + ' ' + ${user.lastName}">Jan Kowalski</td>
-        <td th:text="'Phone Number: ' + ${user.phoneNumber}">Phone Number: 123456789</td>
+        <h6 th:text="${user.id}">1</h6>
+        <h1 th:text="${user.firstName} + ' ' + ${user.lastName}">Jan Kowalski</h1>
+        <p th:text="'Phone Number: ' + ${user.phoneNumber}">Phone Number: 123456789</p>
     </li>
 </ul>
+
+<form action="/users" method="post">
+    <h2>First Name</h2>
+    <input type="text" name="firstName">
+    <br>
+    <h2>Last Name</h2>
+    <input type="text" name="lastName">
+    <br>
+    <h2>Phone Number</h2>
+    <input type="text" name="phoneNumber">
+    <br>
+
+    <button type="submit">Save</button>
+</form>
+
 </body>
 </html>

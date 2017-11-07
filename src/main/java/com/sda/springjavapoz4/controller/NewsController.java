@@ -1,5 +1,6 @@
 package com.sda.springjavapoz4.controller;
 
+import com.sda.springjavapoz4.model.User;
 import com.sda.springjavapoz4.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,11 @@ public class NewsController {
     public ModelAndView getAllNews() {
         ModelAndView modelAndView = new ModelAndView("allNews");
         modelAndView.addObject("allNews", newsService.getAllNews());
+        modelAndView.addObject("test", new User());
         return modelAndView;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ModelAndView getNews(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView("news");
         modelAndView.addObject("news", newsService.getNews(id));
