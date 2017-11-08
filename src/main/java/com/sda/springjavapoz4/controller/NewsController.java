@@ -1,12 +1,11 @@
 package com.sda.springjavapoz4.controller;
 
+import com.sda.springjavapoz4.model.News;
 import com.sda.springjavapoz4.model.User;
 import com.sda.springjavapoz4.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -15,6 +14,12 @@ public class NewsController {
 
     @Autowired
     private NewsService newsService;
+
+    @PostMapping
+    public String saveNews(@ModelAttribute News news) {
+        int index = newsService.saveNewsWithRandomUser(news);
+        return "redirect:/news/" + index;
+    }
 
     @GetMapping
     public ModelAndView getAllNews() {
@@ -31,3 +36,8 @@ public class NewsController {
         return modelAndView;
     }
 }
+
+//1. formularz - allNews.html
+//2. post danych do backendu (/news) - nie postujemy usera
+//3. zapisujemy news w serwisie - dodajemy istniejacego usera z usersService do authora
+//4. redirect na /news/{id}

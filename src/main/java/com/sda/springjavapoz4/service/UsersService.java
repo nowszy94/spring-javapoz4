@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Component
@@ -50,6 +51,12 @@ public class UsersService {
         user.setLastName(lastNameGenerator.getRandomLastName());
         user.setPhoneNumber("12368643");
         return user;
+    }
+
+    public User getRandomUser() {
+        Random random = new Random();
+        int index = random.nextInt(users.size());
+        return users.get(index);
     }
 
     public List<User> getUsersByFirstName(String firstName) {

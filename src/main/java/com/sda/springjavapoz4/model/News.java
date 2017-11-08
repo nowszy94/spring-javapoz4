@@ -1,6 +1,7 @@
 package com.sda.springjavapoz4.model;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -9,6 +10,7 @@ public class News {
     private long id;
     private String title;
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private String smallImgPath;
     private String bigImgPath;
