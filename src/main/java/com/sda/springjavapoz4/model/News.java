@@ -3,10 +3,15 @@ package com.sda.springjavapoz4.model;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
 public class News {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
     private String description;
@@ -14,6 +19,7 @@ public class News {
     private LocalDate date;
     private String smallImgPath;
     private String bigImgPath;
+    @ManyToOne
     private User author;
 
     public long getId() {

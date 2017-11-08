@@ -48,7 +48,6 @@ public class UsersService {
 
     public User getExampleUser() {
         User user = new User();
-        user.setId(1);
         user.setFirstName(firstNameGenerator.getRandomFirstName());
         user.setLastName(lastNameGenerator.getRandomLastName());
         user.setPhoneNumber("12368643");
@@ -60,9 +59,7 @@ public class UsersService {
     }
 
     public List<User> getUsersByFirstName(String firstName) {
-        return StreamSupport.stream(usersRepository.findAll().spliterator(), false)
-                .filter(user -> user.getFirstName().equals(firstName))
-                .collect(Collectors.toList());
+        return usersRepository.findByFirstName(firstName);
     }
 
     public List<User> getAllUsers() {
